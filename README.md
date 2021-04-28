@@ -1,24 +1,8 @@
-# Simple curses-based text editor
+# CONDENSED : CONvert Diffs to fakE vim sessioNs for aSciinema rEcorDing
 
-Features:
-* curses interface with line numbers and mode display
-* open/write/create files
-* some vim-like movement commands
-* line wrapping
-* scrolling
-* non-printing character display
+based on [this lovely, simple cli editor](https://github.com/tdryer/editor), we
+take in a diff, figure out which file it edits, and then send a series of
+keypresses which make it look like we're typing interactively.
 
-To run:
-
-```
-python -m editor
-```
-
-To test:
-
-```
-pip install -r requirements.txt
-py.test
-```
-
-Some ideas from [The Craft of Text Editing](http://www.finseth.com/craft/).
+Perfect for Asciinema recordings where you want to show every step you're going
+to do on the CLI, without having to have a human do it.
