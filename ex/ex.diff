@@ -1,0 +1,26 @@
+commit 816ec409bed0338e9f0df81f57f7eeb514f4eb78
+Author: The Galaxy Training Network <galaxytrainingnetwork@gmail.com>
+Date:   Mon Feb 15 14:06:56 2021 +0100
+
+    admin/ansible-galaxy/0005: Add pip, miniconda, galaxy to playbook
+
+diff --git a/galaxy.yml b/galaxy.yml
+index dfef61c..6ea4449 100644
+--- a/ex/galaxy.yml
++++ b/ex/galaxy.yml
+@@ -5,9 +5,14 @@
+   pre_tasks:
+     - name: Install Dependencies
+       package:
+-        name: 'python3-psycopg2'
++        name: ['acl', 'bzip2', 'git', 'make', 'python3-psycopg2', 'tar', 'virtualenv']
+   roles:
+     - galaxyproject.postgresql
+     - role: natefoo.postgresql_objects
+       become: true
+       become_user: postgres
++    - geerlingguy.pip
++    - galaxyproject.galaxy
++    - role: uchida.miniconda
++      become: true
++      become_user: "{{ galaxy_user.name }}"
